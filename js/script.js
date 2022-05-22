@@ -5,6 +5,7 @@ const range = document.querySelector('#jsRange');
 const mode = document.querySelector('#jsMode');
 const saveBtn = document.querySelector('#jsSave');
 const $currentColor = document.querySelector('#currentColor')
+const $cleaneBtn = document.querySelector('#jsCleane')
 
 const initialColor = '#2c2c2c';
 const canvasSize = 700;
@@ -66,8 +67,10 @@ function handleModeClick () {
     if (filling === true) {
         filling = false;
         mode.innerHTML = 'Заливка';
+        mode.style.backgroundColor = 'white'
     } else {
         filling = true;
+        mode.style.backgroundColor = '#c8d6e5'
         mode.innerHTML = 'Рисование';
     }
 }
@@ -88,6 +91,11 @@ function handleSaveClick () {
     link.href = image;
     link.download = 'my drawing';
     link.click();
+}
+
+function handleCleanCanvas () {
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, canvasSize, canvasSize);
 }
 
 
@@ -113,4 +121,8 @@ if (mode) {
 
 if (saveBtn) {
     saveBtn.addEventListener('click', handleSaveClick);
+}
+
+if ($cleaneBtn) {
+    $cleaneBtn.addEventListener('click', handleCleanCanvas);
 }
