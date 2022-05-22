@@ -4,6 +4,7 @@ const colors = document.querySelectorAll('.jsColor');
 const range = document.querySelector('#jsRange');
 const mode = document.querySelector('#jsMode');
 const saveBtn = document.querySelector('#jsSave');
+const $currentColor = document.querySelector('#currentColor')
 
 const initialColor = '#2c2c2c';
 const canvasSize = 700;
@@ -18,8 +19,6 @@ ctx.lineWidth = 2.5;
 ctx.strokeStyle = initialColor;
 ctx.fillStyle = initialColor;
 
-// ctx.fillStyle = 'green'
-// ctx.fillRect(100, 100, 300, 450);
 
 let painting = false;
 let filling = false;
@@ -55,6 +54,7 @@ function handleColorClick(event) {
     const color = event.target.style.backgroundColor;
     ctx.strokeStyle = color;
     ctx.fillStyle = color;
+    $currentColor.style.backgroundColor = color;
 }
 
 function handleRangeChange (event) {
